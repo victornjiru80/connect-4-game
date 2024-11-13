@@ -1,0 +1,290 @@
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #282c34;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+h1, h2 {
+    margin: 20px;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #282c34;
+    transition: opacity 0.5s;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#difficulty-screen {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#score {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#rules-flyer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#rules-flyer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #61dafb;
+}
+
+#rules-flyer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#rules-flyer li {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+#rules-flyer strong {
+    color: #e74c3c;
+}
+
+#difficulty {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #61dafb;
+    background-color: #282c34;
+    color: #61dafb;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#difficulty:focus {
+    border-color: #21a1f1;
+    outline: none;
+}
+
+#difficulty-screen h1 {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 0 5px #fff, 0 0 10px #61dafb, 0 0 15px #61dafb, 0 0 20px #61dafb, 0 0 25px #61dafb;
+    animation: glow 1.5s infinite, breathe 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #61dafb, 0 0 15px #61dafb, 0 0 20px #61dafb, 0 0 25px #61dafb;
+    }
+    50% {
+        text-shadow: 0 0 10px #fff, 0 0 20px #61dafb, 0 0 30px #61dafb, 0 0 40px #61dafb, 0 0 50px #61dafb;
+    }
+}
+
+@keyframes breathe {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #61dafb;
+    color: #282c34;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #21a1f1;
+}
+
+#controls {
+    margin-bottom: 20px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(7, 80px);
+    grid-gap: 5px;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    background-color: #1c1e22;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cell.red {
+    background-color: #e74c3c;
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.8);
+}
+
+.cell.yellow {
+    background-color: #f1c40f;
+    box-shadow: 0 0 10px rgba(241, 196, 15, 0.8);
+}
+
+.cell.dropping {
+    animation: drop 0.6s ease-out forwards;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(-450px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.made {
+    color: aqua;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#breathing-text {
+    font-size: 1.5rem;
+    color: #61dafb;
+    animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 768px) {
+    #board {
+        grid-template-columns: repeat(7, 50px);
+        grid-gap: 3px;
+    }
+
+    .cell {
+        width: 50px;
+        height: 50px;
+    }
+
+    button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Glowing effect for Connect 4 text */
+#glowing-text {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red, 0 0 35px red;
+    animation: flicker 1.5s infinite;
+}
+
+/* Flicker effect */
+@keyframes flicker {
+    0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red, 0 0 35px red; }
+    50% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px red, 0 0 40px red, 0 0 50px red, 0 0 60px red, 0 0 70px red; }
+    100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red, 0 0 35px red; }
+}
+
+#game-screen h1 {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0 0 10px #61dafb, 0 0 20px #61dafb, 0 0 30px #61dafb, 0 0 40px #61dafb, 0 0 50px #61dafb;
+    animation: glowBlue 1.5s infinite;
+}
+
+@keyframes glowBlue {
+    0%, 100% {
+        text-shadow: 0 0 10px #61dafb, 0 0 20px #61dafb, 0 0 30px #61dafb, 0 0 40px #61dafb, 0 0 50px #61dafb;
+    }
+    50% {
+        text-shadow: 0 0 15px #fff, 0 0 25px #61dafb, 0 0 35px #61dafb, 0 0 45px #61dafb, 0 0 55px #61dafb;
+    }
+}
+
+.status {
+    color: #61dafb;
+    font-weight: bold;
+}
+
+/* Fading effect for placeholder text */
+#footer-text {
+    position: absolute;
+    bottom: 10px;
+    color: #fff;
+    font-size: 14px;
+    opacity: 0;
+    animation: fadeInOut 4s infinite;
+}
+
+/* Fade in and out effect */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
