@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect 4</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="screen">
+        <h1 id="glowing-text">Connect 4</h1>
+        <footer id="footer-text">
+            <p class="made">Made by victor</p>
+        </footer>
+    </div>
+
+   <!-- Difficulty Select Screen -->
+<div id="difficulty-screen" class="screen">
+    <h1>Difficulty Select</h1>
+    <div id="score">Score: 0</div> <!-- Score display element -->
+    <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+    <button id="start-game">Start Game</button>
+</div>
+
+    <!-- Rules Flyer -->
+    <div id="rules-flyer">
+        <h3>Connect 4 Rules</h3>
+        <ul>
+            <li><strong>Objective:</strong> Connect four of your own circles in a row, either horizontally, vertically, or diagonally.</li>
+            <li><strong>Gameplay:</strong> Players take turns dropping one circle at a time into any column.</li>
+            <li><strong>Winning:</strong> The first player to connect four circles in a row wins the game.</li>
+            <li><strong>Draw:</strong> The game is a draw if the board fills up completely without any player connecting four circles.</li>
+        </ul>
+    </div>
+</div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+        <h1>Connect 4</h1>
+        <div id="controls">
+            <button id="reset-button">Reset Game</button>
+        </div>
+        <div id="status" class="status">Player RED's turn</div>
+        <div id="board"></div>
+    </div>
+
+    <script src="connect4.js"></script>
+</body>
+</html>
